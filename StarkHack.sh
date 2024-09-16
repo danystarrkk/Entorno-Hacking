@@ -82,9 +82,7 @@ function paso4() {
 
   sudo mkdir /usr/share/zsh-sudo/
 
-  sudo wget /usr//share/zsh-sudo/sudo.plugin.zsh https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/plugins/sudo/sudo.plugin.zsh
-
-  sudo mv $rutaP/../sudo.plugin.zsh /usr/share/zsh-sudo/
+  sudo wget -O /usr/share/zsh-sudo/sudo.plugin.zsh https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/plugins/sudo/sudo.plugin.zsh
 
   cd
 
