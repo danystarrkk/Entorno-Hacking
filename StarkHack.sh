@@ -128,6 +128,7 @@ function paso5() {
   sudo apt install i3lock
 
   cp -r $rutaT/nvim $rutaP/.config
+  cp -r $rutaT/rofi $rutaP/.config
 
   echo "${greenColour}\t \n\nLa configuración se Realizado correctamente \n\n${endColour}"
 
