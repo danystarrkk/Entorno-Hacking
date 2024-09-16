@@ -125,7 +125,7 @@ function paso5() {
   clear
   echo -e "${blueColour}\n\t Paso 5: Instalación del nvim y i3lock${endColour}"
 
-  sudo apt install i3lock
+  sudo apt install i3lock npm imagemagick
 
   cp -r $rutaT/nvim $rutaP/.config
   cp -r $rutaT/rofi $rutaP/.config
