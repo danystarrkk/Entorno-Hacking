@@ -116,24 +116,16 @@ function paso4() {
 
   echo "${yellowColour}\n\n Instalación P10k en root:\n\n${endColour}"
 
-  user=$(whoami)
+  sudo touch /root/.zshrc
 
-  sudo su
+  sudo git clone --depth=1 https://github.com/romkatv/powerlevel10k.git /root/powerlevel10k
+  echo 'source ~/powerlevel10k/powerlevel10k.zsh-theme' >>/root/.zshrc
 
-  cd
+  sudo rm -rf /root/.p10k.zsh
+  sudo rm -rf /root/.zshrc
 
-  git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k
-  echo 'source ~/powerlevel10k/powerlevel10k.zsh-theme' >>~/.zshrc
-
-  rm -rf $rutaP/.p10k.zsh
-  rm -rf $rutaP/.zshrc
-
-  cp $rutaT/files/.zshrc $HOME
-  cp $rutaT/files/.p10k.zsh $HOME
-
-  su $user
-
-  cd $rutaT
+  cp $rutaT/files/.zshrc /root
+  cp $rutaT/files/.p10k.zsh /root
 
   rm -rf ~/.config/polybar/
   cp -r $rutaT/polybar $HOME/.config
