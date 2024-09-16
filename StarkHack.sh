@@ -22,7 +22,7 @@ trap ctrl_c SIGINT
 # Varibales globlales
 
 rutaP="$HOME"
-rutaT="$pwd/configs"
+rutaT="$HOME/Descargas/Entorno-Hacking/configs"
 
 # funciones
 
