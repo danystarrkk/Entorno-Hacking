@@ -11,10 +11,10 @@ super + d
 	/usr/bin/rofi -show drun
 
 super + r
-  $HOME/rofi/deathemonic/bin/runner
+  $HOME/.config/rofi/bin/runner
 
 super + p
-  $HOME/rofi/deathemonic/bin/powermenu
+  $HOME/.config/rofi/bin/powermenu
 
 # make sxhkd reload its configuration files:
 super + Escape
