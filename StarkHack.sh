@@ -37,7 +37,7 @@ function paso2() {
   echo -e "${blueColour}\n\n\t Paso 1: Instalación de BSPWM y SXHKD\n\n"
   echo -e "${purpleColour}[+] Instalación de dependecias:\n${endColour}"
 
-  sudo apt install build-essential git vim xcb libxcb-util0-dev libxcb-ewmh-dev libxcb-randr0-dev libxcb-icccm4-dev libxcb-keysyms1-dev libxcb-xinerama0-dev libasound2-dev libxcb-xtest0-dev libxcb-shape0-dev zsh
+  sudo apt install build-essential git vim libxcb-util0-dev libxcb-ewmh-dev libxcb-randr0-dev libxcb-icccm4-dev libxcb-keysyms1-dev libxcb-xinerama0-dev libasound2-dev libxcb-xtest0-dev libxcb-shape0-dev zsh wmname
 
   echo -e "${purpleColour}[+] Instalación de BSPWM y SXHKD: \n${endColour}"
 
@@ -49,7 +49,7 @@ function paso2() {
   chmod +x $HOME/.config/bspwm/scripts/*
 
   mkdir $rutaP/Imágenes/.wallpaper
-  cp $rutaT/wallpaper $rutaP/Imágenes/.wallpaper
+  cp $rutaT/wallpaper/fondo.png $rutaP/Imágenes/.wallpaper
 
   sleep 10
 
@@ -63,7 +63,7 @@ function paso3() {
 
   cp -r $rutaT/kitty $rutaP/.config
 
-  sudo mv $rutaT/fonts/* /usr/share/fonts
+  sudo cp $rutaT/fonts/* /usr/share/fonts
 
   echo -e "${purpleColour}\n\nConfiguración de Picom: \n\n${endColour}"
 
@@ -78,11 +78,13 @@ function paso4() {
 
   echo -e "${purpleColour} \n\n[+] Instalación de las Dependecias\n"
 
-  sudo apt install zsh-autocomplete zsh-syntax-highlighting bat lsd
+  sudo apt install zsh-syntax-highlighting bat lsd
 
   sudo mkdir /usr/share/zsh-sudo/
 
   sudo wget /usr//share/zsh-sudo/sudo.plugin.zsh https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/plugins/sudo/sudo.plugin.zsh
+
+  sudo mv $rutaP/../sudo.plugin.zsh /usr/share/zsh-sudo/
 
   cd
 
@@ -100,13 +102,20 @@ function paso4() {
   sudo touch /root/.zshrc
 
   sudo git clone --depth=1 https://github.com/romkatv/powerlevel10k.git /root/powerlevel10k
-  echo 'source ~/powerlevel10k/powerlevel10k.zsh-theme' >>/root/.zshrc
+  sudo echo 'source ~/powerlevel10k/powerlevel10k.zsh-theme' >>/root/.zshrc
 
   sudo rm -rf /root/.p10k.zsh
   sudo rm -rf /root/.zshrc
 
-  cp $rutaT/files/.zshrc /root
-  cp $rutaT/files/.p10k.zsh /root
+  sudo cp $rutaT/files/.zshrc /root
+  sudo cp $rutaT/files/.p10k.zsh /root
+
+  sudo cp -r $rutaT/kitty /root/.config/
+  sudo cp -r $rutaT/nvim /root/.config/
+
+  sudo ln -s -f $rutaP/.zshrc /root/.zshrc
+
+  cp -r $rutaT/bin $rutaP/.config
 
   rm -rf ~/.config/polybar/
   cp -r $rutaT/polybar $HOME/.config
