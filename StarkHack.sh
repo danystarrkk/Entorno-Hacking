@@ -39,27 +39,19 @@ function paso2() {
 
   sudo apt install build-essential git vim xcb libxcb-util0-dev libxcb-ewmh-dev libxcb-randr0-dev libxcb-icccm4-dev libxcb-keysyms1-dev libxcb-xinerama0-dev libasound2-dev libxcb-xtest0-dev libxcb-shape0-dev vmname zsh
 
-  if [ $(echo $?) -eq 0 ]; then
+  echo -e "${purpleColour}[+] Instalación de BSPWM y SXHKD: \n${endColour}"
 
-    echo -e "${purpleColour}[+] Instalación de BSPWM y SXHKD: \n${endColour}"
+  sudo apt install bspwm sxhkd
 
-    sudo apt install bspwm sxhkd
+  cp -r $rutaT/bspwm $rutaP/.config
+  cp -r $rutaT/sxhkd $rutaP/.config
 
-    cp -r $rutaT/bspwm $rutaP/.config
-    cp -r $rutaT/sxhkd $rutaP/.config
+  chmod +x $HOME/.config/bspwm/scripts/*
 
-    chmod +x $HOME/.config/bspwm/scripts/*
+  mkdir $rutaP/Imágenes/.wallpaper
+  cp $rutaT/wallpaper $rutaP/Imágenes/.wallpaper
 
-    mkdir $rutaP/Imágenes/.wallpaper
-    cp $rutaT/wallpaper $rutaP/Imágenes/.wallpaper
-
-    sleep 10
-
-  else
-
-    echo -e "${redColour}[!] Error en el clonado......${endColour}"
-
-  fi
+  sleep 10
 
 }
 
