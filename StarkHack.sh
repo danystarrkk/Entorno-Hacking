@@ -37,7 +37,7 @@ function paso2() {
   echo -e "${blueColour}\n\n\t Paso 1: Instalación de BSPWM y SXHKD\n\n"
   echo -e "${purpleColour}[+] Instalación de dependecias:\n${endColour}"
 
-  sudo apt install build-essential git vim xcb libxcb-util0-dev libxcb-ewmh-dev libxcb-randr0-dev libxcb-icccm4-dev libxcb-keysyms1-dev libxcb-xinerama0-dev libasound2-dev libxcb-xtest0-dev libxcb-shape0-dev vmname zsh
+  sudo apt install build-essential git vim xcb libxcb-util0-dev libxcb-ewmh-dev libxcb-randr0-dev libxcb-icccm4-dev libxcb-keysyms1-dev libxcb-xinerama0-dev libasound2-dev libxcb-xtest0-dev libxcb-shape0-dev zsh
 
   echo -e "${purpleColour}[+] Instalación de BSPWM y SXHKD: \n${endColour}"
 
@@ -63,7 +63,7 @@ function paso3() {
 
   cp -r $rutaT/kitty $rutaP/.config
 
-  mv $rutaT/fonts/* /usr/share/fonts
+  sudo mv $rutaT/fonts/* /usr/share/fonts
 
   echo -e "${purpleColour}\n\nConfiguración de Picom: \n\n${endColour}"
 
