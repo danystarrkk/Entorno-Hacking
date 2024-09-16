@@ -43,22 +43,7 @@ function paso2() {
 
     echo -e "${purpleColour}[+] Instalación de BSPWM y SXHKD: \n${endColour}"
 
-    git clone https://github.com/baskerville/bspwm.git $rutaT/clone
-    git clone https://github.com/baskerville/sxhkd.git $rutaT/clone
-
-    # Instalando BSPWM
-
-    cd $rutaT/clone/bspwm
-    make
-    sudo make install
-
-    # Instalando SXHKD
-
-    cd $rutaT/clone/sxhkd
-    make
-    sudo make install
-
-    sudo apt install bspwm
+    sudo apt install bspwm sxhkd
 
     cp -r $rutaT/bspwm $rutaP/.config
     cp -r $rutaT/sxhkd $rutaP/.config
@@ -67,6 +52,8 @@ function paso2() {
 
     mkdir $rutaP/Imágenes/.wallpaper
     cp $rutaT/wallpaper $rutaP/Imágenes/.wallpaper
+
+    sleep 10
 
   else
 
@@ -89,6 +76,8 @@ function paso3() {
   echo -e "${purpleColour}\n\nConfiguración de Picom: \n\n${endColour}"
 
   cp -r $rutaT/picom $rutaP/.config
+
+  sleep 10
 
 }
 
@@ -130,6 +119,8 @@ function paso4() {
   rm -rf ~/.config/polybar/
   cp -r $rutaT/polybar $HOME/.config
 
+  sleep 10
+
 }
 
 function paso5() {
@@ -141,6 +132,8 @@ function paso5() {
   cp -r $rutaT/nvim $rutaP/.config
 
   echo "${greenColour}\t \n\nLa configuración se Realizado correctamente \n\n${endColour}"
+
+  sleep 10
 
 }
 
