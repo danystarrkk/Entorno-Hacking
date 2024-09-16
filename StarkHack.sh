@@ -102,13 +102,12 @@ function paso4() {
   sudo touch /root/.zshrc
 
   sudo git clone --depth=1 https://github.com/romkatv/powerlevel10k.git /root/powerlevel10k
-  sudo echo 'source ~/powerlevel10k/powerlevel10k.zsh-theme' >>/root/.zshrc
 
   sudo rm -rf /root/.p10k.zsh
   sudo rm -rf /root/.zshrc
 
-  sudo cp $rutaT/files/.zshrc /root
-  sudo cp $rutaT/files/.p10k.zsh /root
+  sudo cp $rutaT/files_root/.zshrc /root
+  sudo cp $rutaT/files_root/.p10k.zsh /root
 
   sudo cp -r $rutaT/kitty /root/.config/
   sudo cp -r $rutaT/nvim /root/.config/
