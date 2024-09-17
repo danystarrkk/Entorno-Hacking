@@ -48,8 +48,8 @@ function paso2() {
 
   chmod +x $HOME/.config/bspwm/scripts/*
 
-  mkdir $rutaP/Picture/.wallpaper
-  cp $rutaT/wallpaper/fondo.png $rutaP/Picture/.wallpaper
+  mkdir $rutaP/Pictures/.wallpaper
+  cp $rutaT/wallpaper/fondo.png $rutaP/Pictures/.wallpaper
 
   sleep 10
 
