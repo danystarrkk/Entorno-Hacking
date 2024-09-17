@@ -43,7 +43,7 @@ function installDependencias() {
   if [ $opt1 == "y" ]; then
     echo -e "\n${purpleColour}    [+] Instalando Dependencias......${endColour}"
 
-    sudo apt install build-essential git vim libxcb-util0-dev libxcb-ewmh-dev libxcb-randr0-dev libxcb-icccm4-dev libxcb-keysyms1-dev libxcb-xinerama0-dev libasound2-dev libxcb-xtest0-dev libxcb-shape0-dev zsh bspwm sxhkd picom polybar rofi feh kitty zsh-syntax-highlighting bat lsd sudo apt i3lock npm imagemagick
+    sudo apt install build-essential git vim libxcb-util0-dev libxcb-ewmh-dev libxcb-randr0-dev libxcb-icccm4-dev libxcb-keysyms1-dev libxcb-xinerama0-dev libasound2-dev libxcb-xtest0-dev libxcb-shape0-dev zsh bspwm sxhkd picom polybar rofi feh kitty zsh-syntax-highlighting bat lsd sudo apt i3lock npm imagemagick suckless-tools &>/dev/null
 
     if [ $(echo $?) -eq 0 ]; then
       echo -e "${greenColour}    [+] Instalación de dependecias correctamente.....${endColour}"
