@@ -69,11 +69,11 @@ export LS_COLORS="rs=0:di=34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;
 function settarget(){
     ip_address=$1
     machine_name=$2
-    echo "$ip_address $machine_name" > /home/stark/.config/bin/target
+    echo "$ip_address $machine_name" > $HOME/.config/bin/target
 }
 
 function cleartarget(){
-    echo '' > /home/stark/.config/bin/target
+    echo '' > $HOME/.config/bin/target
 }
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
