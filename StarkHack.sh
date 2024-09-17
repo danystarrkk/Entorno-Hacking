@@ -26,7 +26,7 @@ trap ctrl_c SIGINT
 ####### Varibles Globales ######
 
 rutaP="$HOME"
-rutaT="$HOME/Descargas/Entorno-Hacking/configs"
+rutaT="$HOME/Downloads/Entorno-Hacking/configs"
 
 ################################
 
