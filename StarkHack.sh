@@ -22,7 +22,7 @@ trap ctrl_c SIGINT
 # Varibales globlales
 
 rutaP="$HOME"
-rutaT="$HOME/Descargas/Entorno-Hacking/configs"
+rutaT="$HOME/Downloads/Entorno-Hacking/configs"
 
 # funciones
 
@@ -48,8 +48,8 @@ function paso2() {
 
   chmod +x $HOME/.config/bspwm/scripts/*
 
-  mkdir $rutaP/Imágenes/.wallpaper
-  cp $rutaT/wallpaper/fondo.png $rutaP/Imágenes/.wallpaper
+  mkdir $rutaP/Picture/.wallpaper
+  cp $rutaT/wallpaper/fondo.png $rutaP/Picture/.wallpaper
 
   sleep 10
 
