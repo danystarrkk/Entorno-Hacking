@@ -115,7 +115,7 @@ super + ctrl + shift + space
 #
 
 # move a floating window
-super + shift  {h,j,k,l}
+super + shift + ctrl + {h,j,k,l}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
 
 # custom resize
