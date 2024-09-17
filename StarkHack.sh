@@ -71,7 +71,7 @@ function configuracionEntorno() {
   cp $rutaT/wallpaper/fondo.png $rutaP/Pictures/.wallpaper
 
   cp -r $rutaT/kitty $rutaP/.config
-  sudo -r $rutaT/kitty /root/.config
+  sudo cp -r $rutaT/kitty /root/.config
 
   sudo cp $rutaT/fonts/* /usr/share/fonts
 
