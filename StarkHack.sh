@@ -1,6 +1,7 @@
 #!/usr/bin/bash
 
-#Colours
+############# Colores ##############
+
 greenColour="\e[0;32m\033[1m"
 endColour="\033[0m\e[0m"
 redColour="\e[0;31m\033[1m"
@@ -10,38 +11,56 @@ purpleColour="\e[0;35m\033[1m"
 turquoiseColour="\e[0;36m\033[1m"
 grayColour="\e[0;37m\033[1m"
 
-# Exit
+###################################
+
+########## Salir ########
 
 function ctrl_c() {
-  echo -e "\n\n${redColour}[+] Saliendo .....${endColour}\n\n"
-  exit
+  echo -e ""
 }
 
 trap ctrl_c SIGINT
 
-# Varibales globlales
+#########################
+
+####### Varibles Globales ######
 
 rutaP="$HOME"
-rutaT="$HOME/Downloads/Entorno-Hacking/configs"
+rutaT="$HOME/Descargas/Entorno-Hacking/configs"
 
-# funciones
+################################
 
-function paso1() {
+############## Funciones Globales #############
+
+function installDependencias() {
+
   clear
-  #clonamos el repositorio
+
+  echo -e "\n\t ${blueColour} Instalación del Entorno Hack \n\n${endColour}"
+
+  echo -en "${turquoiseColour}[1] Instalar dependencias [y/n]: ${endColour}" && read opt1
+
+  if [ $opt1 == "y" ]; then
+    echo -e "\n${purpleColour}    [+] Instalando Dependencias......${endColour}"
+
+    sudo apt install build-essential git vim libxcb-util0-dev libxcb-ewmh-dev libxcb-randr0-dev libxcb-icccm4-dev libxcb-keysyms1-dev libxcb-xinerama0-dev libasound2-dev libxcb-xtest0-dev libxcb-shape0-dev zsh wmname bspwm sxhkd picom polybar rofi feh kitty zsh-syntax-highlighting bat lsd sudo apt install i3lock npm imagemagick
+
+    if [ $(echo $?) -eq 0 ]; then
+      echo -e "${greenColour}    [+] Instalación de dependecias correctamente.....${endColour}"
+    else
+      echo -e "${redColour}    [!] Error en la Instalación de Dependencias....${endColour}"
+
+    fi
+
+  else
+    echo -e "\n${redColour}    [!] No se instalaran las dependecias, no se recomienda omitir este paso...  ${endColour}"
+  fi
+
 }
 
-function paso2() {
-  clear
+function configuracionEntorno() {
 
-  echo -e "${blueColour}\n\n\t Paso 1: Instalación de BSPWM y SXHKD\n\n"
-  echo -e "${purpleColour}[+] Instalación de dependecias:\n${endColour}"
-
-  sudo apt install build-essential git vim libxcb-util0-dev libxcb-ewmh-dev libxcb-randr0-dev libxcb-icccm4-dev libxcb-keysyms1-dev libxcb-xinerama0-dev libasound2-dev libxcb-xtest0-dev libxcb-shape0-dev zsh wmname
-
-  echo -e "${purpleColour}[+] Instalación de BSPWM y SXHKD: \n${endColour}"
-
-  sudo apt install bspwm sxhkd
+  echo -e "\n${turquoiseColour}[2] Configuración del Entorno: ${endColour}"
 
   cp -r $rutaT/bspwm $rutaP/.config
   cp -r $rutaT/sxhkd $rutaP/.config
@@ -51,44 +70,21 @@ function paso2() {
   mkdir $rutaP/Pictures/.wallpaper
   cp $rutaT/wallpaper/fondo.png $rutaP/Pictures/.wallpaper
 
-  sleep 10
-
-}
-
-function paso3() {
-  clear
-  echo -e "${blueColour}\t[+] Instalación de Polybar, Picom y Rofi: \n\n${endColour}"
-
-  sudo apt install picom polybar rofi feh kitty
-
   cp -r $rutaT/kitty $rutaP/.config
   sudo -r $rutaT/kitty /root/.config
 
   sudo cp $rutaT/fonts/* /usr/share/fonts
 
-  echo -e "${purpleColour}\n\nConfiguración de Picom: \n\n${endColour}"
-
   cp -r $rutaT/picom $rutaP/.config
-
-  sleep 10
-
-}
-
-function paso4() {
-  echo -e "${blueColour}\t Paso 4: Instalación y configuración zsh y p10k${endColour}"
-
-  echo -e "${purpleColour} \n\n[+] Instalación de las Dependecias\n"
-
-  sudo apt install zsh-syntax-highlighting bat lsd
 
   sudo mkdir /usr/share/zsh-sudo/
 
-  sudo wget -O /usr/share/zsh-sudo/sudo.plugin.zsh https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/plugins/sudo/sudo.plugin.zsh
+  sudo wget -O /usr/share/zsh-sudo/sudo.plugin.zsh https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/plugins/sudo/sudo.plugin.zsh &>/dev/null
 
   cd
 
-  git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k
-  echo 'source ~/powerlevel10k/powerlevel10k.zsh-theme' >>~/.zshrc
+  git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k &>/dev/null
+  echo 'source ~/powerlevel10k/powerlevel10k.zsh-theme' >>~/.zshrc &>/dev/null
 
   rm -rf $rutaP/.p10k.zsh
   rm -rf $rutaP/.zshrc
@@ -96,11 +92,9 @@ function paso4() {
   cp $rutaT/files/.zshrc $HOME
   cp $rutaT/files/.p10k.zsh $HOME
 
-  echo "${yellowColour}\n\n Instalación P10k en root:\n\n${endColour}"
-
   sudo touch /root/.zshrc
 
-  sudo git clone --depth=1 https://github.com/romkatv/powerlevel10k.git /root/powerlevel10k
+  sudo git clone --depth=1 https://github.com/romkatv/powerlevel10k.git /root/powerlevel10k &>/dev/null
 
   sudo rm -rf /root/.p10k.zsh
   sudo rm -rf /root/.zshrc
@@ -117,31 +111,20 @@ function paso4() {
 
   rm -rf ~/.config/polybar/
   cp -r $rutaT/polybar $HOME/.config
-
-  sleep 10
-
-}
-
-function paso5() {
-  clear
-  echo -e "${blueColour}\n\t Paso 5: Instalación del nvim y i3lock${endColour}"
-
-  sudo apt install i3lock npm imagemagick
-
   cp -r $rutaT/nvim $rutaP/.config
   cp -r $rutaT/rofi $rutaP/.config
 
-  rofi-theme-selector
+  rofi-theme-selector &>/dev/null
 
-  echo "${greenColour}\t \n\nLa configuración se Realizado correctamente \n\n${endColour}"
-
-  sleep 10
+  if [ $(echo $?) -eq 0 ]; then
+    echo -e "\n${greenColour}    [+] Se completo la configuración del Entorno.... ${endColour}"
+  else
+    echo -e "\n${redColour}    [!] Error en la configuración del Entorno....${endColour}"
+  fi
 
 }
 
-# Ejercición del Script
+##### Orden de Ejecución #########
 
-paso2
-paso3
-paso4
-paso5
+installDependencias
+configuracionEntorno
