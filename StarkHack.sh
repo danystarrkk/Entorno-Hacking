@@ -84,7 +84,6 @@ function configuracionEntorno() {
   cd
 
   git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k &>/dev/null
-  echo 'source ~/powerlevel10k/powerlevel10k.zsh-theme' >>~/.zshrc &>/dev/null
 
   rm -rf $rutaP/.p10k.zsh
   rm -rf $rutaP/.zshrc
