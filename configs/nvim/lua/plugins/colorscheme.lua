@@ -4,11 +4,9 @@ return {
     name = "onedark",
     lazy = false,
     opts = {
-      style = "darker",
+      style = "deep",
       transparent = true,
       term_colors = true,
-      ending_tildes = false,
-      cmp_itemkind_reverse = false,
     },
   },
   {
